@@ -1,10 +1,18 @@
 <resources>
-    <string name="app_name">SensorySurvey</string>
-    <string name="error_no_sensor">No sensor</string>
-    <string name="label_light">Light Sensor: %1$.2f</string>
-    <string name="label_proximity">Proximity Sensor: %1$.2f</string>
-    <string name="label_accelerometer">Accelerometer: (%1$.2f,%2$.2f,%3$.2f)</string>
-    <string name="label_gyroscope">Gyroscope: (%1$.2f,%2$.2f,%3$.2f)</string>
-    <string name="label_orientation">Orientation: (%1$.2f,%2$.2f,%3$.2f)</string>
-    <string name="label_magnetic_field">Magnetic Field: (%1$.2f,%2$.2f,%3$.2f)</string>
+    <string name="app_name">Sensor Reader</string>
+    <string name="error_no_light_sensor">No Light Sensor Detected</string>
+    <string name="error_no_proximity_sensor">No Proximity Sensor Detected</string>
+    <string name="error_no_accelerometer">No Accelerometer Detected</string>
+    <string name="error_no_gyroscope">No Gyroscope Detected</string>
+    <string name="error_no_orientation">No Orientation Detected</string>
+    <string name="error_no_magnetic_field">No Magnetic Field Detected</string>
+
+    <string name="button_label">START TAKING READINGS</string>
+
+    <string name="label_light">Light Sensor:\n %1$.2f</string>
+    <string name="label_proximity">Proximity Sensor:\n %1$.2f</string>
+    <string name="label_accelerometer">Accelerometer:\n (%1$.2f,%2$.2f,%3$.2f)</string>
+    <string name="label_gyroscope">Gyroscope:\n (%1$.2f,%2$.2f,%3$.2f)</string>
+    <string name="label_orientation">Orientation:\n (%1$.2f,%2$.2f,%3$.2f)</string>
+    <string name="label_magnetic_field">Magnetic Field:\n (%1$.2f,%2$.2f,%3$.2f)</string>
 </resources>

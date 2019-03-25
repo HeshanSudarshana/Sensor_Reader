@@ -5,11 +5,11 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener{
 
@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private TextView mTextGyroscope;
     private TextView mTextOrientation;
     private TextView mTextMagneticField;
+
+    // toggle indicator button
+    private boolean buttonPressed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,21 +63,67 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         mMagneticField = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
 
         // Get the error message from string resources.
-        String sensor_error = getResources().getString(R.string.error_no_sensor);
+        String err_light = getResources().getString(R.string.error_no_light_sensor);
+        String err_proximity = getResources().getString(R.string.error_no_proximity_sensor);
+        String err_accelerometer = getResources().getString(R.string.error_no_accelerometer);
+        String err_gyroscope = getResources().getString(R.string.error_no_gyroscope);
+        String err_orientation = getResources().getString(R.string.error_no_orientation);
+        String err_magnetic_field = getResources().getString(R.string.error_no_magnetic_field);
 
         // If either mSensorLight or mSensorProximity are null, those sensors
         // are not available in the device.  Set the text to the error message
-        if (mSensorLight == null) { mTextSensorLight.setText(sensor_error); }
-        if (mSensorProximity == null) { mTextSensorProximity.setText(sensor_error); }
-        if (mAccelerometer == null) { mTextAccelerometer.setText(sensor_error); }
-        if (mGyroscope == null) { mTextGyroscope.setText(sensor_error); }
-        if (mOrientation == null) { mTextOrientation.setText(sensor_error); }
-        if (mMagneticField == null) { mTextMagneticField.setText(sensor_error); }
+        if (mSensorLight == null) {
+            mTextSensorLight.setText(err_light);
+        } else {
+            mTextSensorLight.setText(getResources().getString(R.string.label_light, 0.0));
+        }
+        if (mSensorProximity == null) {
+            mTextSensorProximity.setText(err_proximity);
+        } else {
+            mTextSensorProximity.setText(getResources().getString(R.string.label_proximity, 0.0));
+        }
+        if (mAccelerometer == null) {
+            mTextAccelerometer.setText(err_accelerometer);
+        } else {
+            mTextAccelerometer.setText(getResources().getString(R.string.label_accelerometer, 0.0, 0.0, 0.0));
+        }
+        if (mGyroscope == null) {
+            mTextGyroscope.setText(err_gyroscope);
+        } else {
+            mTextGyroscope.setText(getResources().getString(R.string.label_gyroscope, 0.0, 0.0, 0.0));
+        }
+        if (mOrientation == null) {
+            mTextOrientation.setText(err_orientation);
+        } else {
+            mTextOrientation.setText(getResources().getString(R.string.label_orientation, 0.0, 0.0, 0.0));
+        }
+        if (mMagneticField == null) {
+            mTextMagneticField.setText(err_magnetic_field);
+        } else {
+            mTextMagneticField.setText(getResources().getString(R.string.label_magnetic_field, 0.0, 0.0, 0.0));
+        }
+
+        buttonPressed = false;
+
+        final Button button = findViewById(R.id.button_start);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (!buttonPressed) {
+                    getSensorReadings();
+                    buttonPressed = true;
+                    button.setText("STOP TAKING READINGS");
+                } else {
+                    stopReadings();
+                    buttonPressed = false;
+                    button.setText("START TAKING READINGS");
+                }
+            }
+        });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
+//    @Override
+    protected void getSensorReadings() {
+//        super.onStart();
 
         // Listeners for the sensors are registered in this callback and
         // can be unregistered in onPause().
@@ -108,9 +157,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
+//    @Override
+    protected void stopReadings() {
+//        super.onStop();
 
         // Unregister all sensor listeners in this callback so they don't
         // continue to use resources when the app is paused.
