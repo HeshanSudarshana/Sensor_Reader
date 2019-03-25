@@ -12,23 +12,91 @@
         android:id="@+id/label_light"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="114dp"
         android:gravity="center_horizontal"
         android:text="@string/label_light"
         android:textStyle="bold"
         android:typeface="sans"
         android:visibility="visible"
-        app:fontFamily="sans-serif" />
+        app:fontFamily="sans-serif"
+        app:layout_constraintStart_toStartOf="@+id/label_proximity"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/label_proximity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:gravity="center_horizontal"
         android:text="@string/label_proximity"
         android:textStyle="bold"
         android:typeface="sans"
         android:visibility="visible"
         app:fontFamily="sans-serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/label_light" />
+
+    <TextView
+        android:id="@+id/label_accelerometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="@string/label_accelerometer"
+        android:textStyle="bold"
+        android:typeface="sans"
+        android:visibility="visible"
+        app:fontFamily="sans-serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_proximity" />
+
+    <TextView
+        android:id="@+id/label_gyroscope"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="@string/label_gyroscope"
+        android:textStyle="bold"
+        android:typeface="sans"
+        android:visibility="visible"
+        app:fontFamily="sans-serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_accelerometer" />
+
+    <TextView
+        android:id="@+id/label_orientation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="@string/label_orientation"
+        android:textStyle="bold"
+        android:typeface="sans"
+        android:visibility="visible"
+        app:fontFamily="sans-serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_gyroscope" />
+
+    <TextView
+        android:id="@+id/label_magnetic_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="@string/label_orientation"
+        android:textStyle="bold"
+        android:typeface="sans"
+        android:visibility="visible"
+        app:fontFamily="sans-serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_orientation" />
 
 </android.support.constraint.ConstraintLayout>
